@@ -1,0 +1,17 @@
+// For Kenyan market - Integrate with Stripe or M-Pesa Daraja API
+const stripe = Stripe('pk_test_...');
+const elements = stripe.elements();
+
+// Handle form submission
+document.querySelector('#pay-btn').addEventListener('click', async () => {
+  const {error, paymentIntent} = await stripe.confirmPayment({
+    elements,
+    confirmParams: { return_url: window.location.href },
+    redirect: 'if_required'
+  });
+  
+  if (!error) {
+    // Poll your worker for status
+    pollOrderStatus(paymentIntent.id);
+  }
+});
