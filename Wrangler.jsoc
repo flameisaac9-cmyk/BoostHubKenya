@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
+  "name": "boosthubkenya",
+
+  "main": "./worker.js",
+
+  "compatibility_date": "2026-08-10",
+
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+
+  "observability": {
+    "enabled": true
+  }
+      }
